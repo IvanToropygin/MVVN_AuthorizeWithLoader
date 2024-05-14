@@ -1,7 +1,8 @@
-package com.skillbox.mvvn_authorizewithloader
+package com.skillbox.mvvn_authorizewithloader.presention
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.skillbox.mvvn_authorizewithloader.data.MainRepository
 
 class MainViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

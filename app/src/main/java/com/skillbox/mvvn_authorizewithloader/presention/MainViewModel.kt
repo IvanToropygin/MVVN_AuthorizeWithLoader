@@ -1,15 +1,13 @@
-package com.skillbox.mvvn_authorizewithloader
+package com.skillbox.mvvn_authorizewithloader.presention
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.skillbox.mvvn_authorizewithloader.data.MainRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-
-private const val TAG = "MainViewModel"
 
 class MainViewModel(
     private val repository: MainRepository,
@@ -21,12 +19,7 @@ class MainViewModel(
     private val _error = Channel<String>()
     val error = _error.receiveAsFlow()
 
-    init {
-        Log.d(TAG, "init")
-    }
-
     fun onClickMeButtonClick(login: String, password: String) {
-        Log.d(TAG, "onClickMeButtonClick")
         viewModelScope.launch {
             val isLoginEmpty = login.isBlank()
             val isPasswordEmpty = password.isBlank()
@@ -54,10 +47,5 @@ class MainViewModel(
                 }
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Log.d(TAG, "onCleared")
     }
 }

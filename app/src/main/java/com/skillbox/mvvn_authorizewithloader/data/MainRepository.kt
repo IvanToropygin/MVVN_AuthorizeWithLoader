@@ -1,4 +1,4 @@
-package com.skillbox.mvvn_authorizewithloader
+package com.skillbox.mvvn_authorizewithloader.data
 
 import kotlinx.coroutines.delay
 import java.net.ConnectException

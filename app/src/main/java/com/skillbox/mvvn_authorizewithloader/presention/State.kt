@@ -1,4 +1,4 @@
-package com.skillbox.mvvn_authorizewithloader
+package com.skillbox.mvvn_authorizewithloader.presention
 
 sealed class State {
     object Loading: State()

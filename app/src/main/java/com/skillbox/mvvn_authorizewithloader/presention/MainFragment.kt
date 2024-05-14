@@ -1,4 +1,4 @@
-package com.skillbox.mvvn_authorizewithloader
+package com.skillbox.mvvn_authorizewithloader.presention
 
 import android.os.Bundle
 import android.view.LayoutInflater
