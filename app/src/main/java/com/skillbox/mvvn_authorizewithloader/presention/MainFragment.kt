@@ -12,14 +12,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.snackbar.Snackbar
 import com.skillbox.mvvn_authorizewithloader.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding
         get() = _binding ?: throw RuntimeException("FragmentMainBinding == null")
 
-    private val viewModel: MainViewModel by viewModels { MainViewModelFactory() }
+    @Inject
+    lateinit var mainViewModelFactory: MainViewModelFactory
+    private val viewModel: MainViewModel by viewModels {
+        mainViewModelFactory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,5 +86,9 @@ class MainFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance() = MainFragment()
     }
 }

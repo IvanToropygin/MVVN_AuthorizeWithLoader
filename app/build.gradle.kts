@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
+    id ("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -59,6 +60,9 @@ dependencies {
     val fragment_version = "1.7.0"
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
-    implementation("com.google.dagger:dagger:2.28.3")
-    kapt("com.google.dagger:dagger-compiler:2.28.3")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-compiler:2.48")
+}
+kapt {
+    correctErrorTypes = true
 }

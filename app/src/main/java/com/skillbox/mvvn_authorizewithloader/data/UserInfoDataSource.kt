@@ -1,8 +1,9 @@
 package com.skillbox.mvvn_authorizewithloader.data
 
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-class UserInfoDataSource {
+class UserInfoDataSource @Inject constructor() {
 
     val userInfo = UserInfoDto(
         email = "email",
