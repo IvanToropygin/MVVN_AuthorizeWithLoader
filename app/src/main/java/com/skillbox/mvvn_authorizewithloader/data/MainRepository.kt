@@ -1,18 +1,18 @@
 package com.skillbox.mvvn_authorizewithloader.data
 
-import kotlinx.coroutines.delay
-import java.net.ConnectException
+import com.skillbox.mvvn_authorizewithloader.entity.UserInfo
 
-class MainRepository {
+class MainRepository(
+    private val userInfoDataSource: UserInfoDataSource
+) {
 
     private var count = 0
 
-    suspend fun getData(): String {
-        delay(3000)
-        return if (++count % 2 == 0) {
-            throw ConnectException("No internet")
-        } else {
-             "Done"
-        }
+    suspend fun authorize(login: String, password: String): Long {
+        return 1L
+    }
+
+    suspend fun getUserInfo(userId: Long): UserInfo {
+        return userInfoDataSource.loadUserInfo(userId)
     }
 }

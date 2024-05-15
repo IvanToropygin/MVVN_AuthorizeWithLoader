@@ -3,6 +3,7 @@ package com.skillbox.mvvn_authorizewithloader.presention
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.skillbox.mvvn_authorizewithloader.data.MainRepository
+import com.skillbox.mvvn_authorizewithloader.domain.GetUserInfoUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -10,7 +11,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    private val repository: MainRepository,
+    private val getUserInfoUseCase: GetUserInfoUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<State>(State.Success)
@@ -39,7 +40,7 @@ class MainViewModel(
             } else {
                 _state.value = State.Loading
                 try {
-                    repository.getData()
+                    getUserInfoUseCase.getUserInfo(login, password)
                     _state.value = State.Success
                 } catch (e: Exception) {
                     _error.send(e.toString())
